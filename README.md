@@ -382,10 +382,6 @@ docker-compose logs -f
 - [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
 - [Terraform Best Practices](https://www.terraform.io/docs/cloud/guides/recommended-practices)
 
-## License
-
-[Add your license here]
-
 ## Acknowledgments
 
 Built following industry best practices for containerization and infrastructure automation.
