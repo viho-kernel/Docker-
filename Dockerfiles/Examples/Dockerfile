@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy application code
 COPY . /app
 
+
+EXPOSE 8080
+
 # Install dependencies (if you have requirements.txt)
 RUN pip install --no-cache-dir -r requirements.txt || true
 
