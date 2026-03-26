@@ -17,6 +17,8 @@ pvresize /dev/nvme0n1p4
 # Show volume group free space
 vgdisplay RootVG
 
+#========#
+
 # Extend /var to 20GB TOTAL
 lvextend -L 30G /dev/RootVG/varVol
 
