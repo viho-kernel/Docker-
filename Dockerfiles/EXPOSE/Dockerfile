@@ -4,3 +4,5 @@ CMD [ "nginx", "-g", "daemon off;" ]
 EXPOSE 8080
 LABEL AUTHOR="VIHARI"  \ 
     TRAINER="Sai"
+
+#There is no functionality in Expose.
