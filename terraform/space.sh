@@ -28,30 +28,17 @@ xfs_growfs /var
 echo "=== Final disk usage ==="
 df -hT
 
-# Remove old Docker/podman packages
-dnf remove -y docker docker-client docker-client-latest docker-common \
-             docker-latest docker-latest-logrotate docker-logrotate \
-             docker-engine podman runc || true
+sudo dnf -y install dnf-plugins-core
 
-# Update system
-dnf update -y
+sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 
-# Install required plugin
-dnf install -y dnf-plugins-core
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
-# Add Docker repo
-dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+sudo systemctl start docker
 
-# Install Docker
-dnf install -y docker-ce docker-ce-cli containerd.io \
-               docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable docker
 
-# Enable and start Docker
-systemctl enable --now docker
+sudo usermod -aG docker ec2-user
 
-# Add ec2-user to docker group
-usermod -aG docker ec2-user
-
-#check docker version
 docker --version
 
