@@ -1,0 +1,171 @@
+# List Docker images (should be empty if none are pulled yet)
+
+docker images
+
+# Pull Docker image from Docker Hub
+
+docker pull viharireddy18/mynginx:v1
+
+# Run Docker Container
+
+docker run --name <CONTAINER-NAME> -p <HOST_PORT>:<CONTAINER_PORT> -d <IMAGE_NAME>:<TAG>
+
+# Example using Docker Hub image:
+
+docker run --name myapp1 -p 8080:80 -d stacksimplify/mynginx:v1
+
+# List only running containers
+
+docker ps
+
+# List all containers (including stopped ones)
+
+docker ps -a
+
+# List only container IDs
+
+docker ps -q
+
+docker exec -it <container-name> /bin/bash
+
+# Example:
+
+docker exec -it myapp1 /bin/sh
+
+# Inside the container, you can run commands:
+
+ls
+hostname
+
+# Execute commands directly
+
+# List directory contents inside the container
+
+docker exec -it myapp1 ls
+
+# Get the hostname of the container
+
+docker exec -it myapp1 hostname
+
+# Print environment variables
+
+docker exec -it myapp1 printenv
+
+# Check disk space usage
+
+docker exec -it myapp1 df -h
+
+# stop a running container
+
+docker stop <container-name>
+docker ps
+docker ps -a
+docker start <container-name>
+
+# Stop the container if it's still running
+
+docker stop <CONTAINER-NAME>
+
+# Remove the container
+
+docker rm <CONTAINER-NAME>
+
+# Or stop and remove the container in one command
+
+docker rm -f <CONTAINER-NAME>
+
+docker images
+docker rmi <IMAGE-ID>
+docker rmi <IMAGE-NAME>:<IMAGE-TAG>
+
+docker version
+
+# Log in and Log out to Docker Hub
+
+docker login
+docker logout
+
+# Run the default Nginx Docker Image
+
+docker run --name <CONTAINER-NAME> -p <HOST_PORT>:<CONTAINER_PORT> -d <IMAGE_NAME>:<TAG>
+
+docker ps
+
+# Stop and remove the Docker container
+
+docker stop myapp1
+docker rm myapp1
+
+# Or force remove the container
+
+docker rm -f myapp1
+
+# Tag the Docker image
+
+docker tag mynginx-custom:v1 YOUR_DOCKER_USERNAME/mynginx-custom:v1
+
+# Push the Docker image to Docker Hub
+
+docker push YOUR_DOCKER_USERNAME/mynginx-custom:v1
+
+# Search for 'nginx' images
+
+docker search nginx
+
+# Limit the search results to 5
+
+docker search nginx --limit 5
+
+# Filter search results by stars (e.g., images with at least 50 stars)
+
+docker search --filter=stars=50 nginx
+
+# Filter for official images only
+
+docker search --filter=is-official=true nginx
+
+## Inspect commands in Docker
+
+# Inspect the Docker image
+
+docker image inspect [IMAGE-NAME]:[IMAGE-TAG]
+
+# Example:
+
+docker image inspect demo4-dockerfile-labels:v1
+
+# Get the creation date of the Docker image
+
+docker inspect --format='{{.Created}}' [IMAGE-NAME]:[IMAGE-TAG]
+
+# Example:
+
+docker inspect --format='{{.Created}}' demo4-dockerfile-labels:v1
+
+# Get the Docker image labels (unformatted)
+
+docker inspect --format='{{json .Config.Labels}}' [IMAGE-NAME]:[IMAGE-TAG]
+
+# Example:
+
+docker image inspect --format='{{json .Config.Labels}}' demo4-dockerfile-labels:v1
+
+# Get the Docker image labels (formatted with jq)
+
+docker image inspect --format='{{json .Config.Labels}}' [IMAGE-NAME]:[IMAGE-TAG] | jq
+
+# Example:
+
+docker image inspect --format='{{json .Config.Labels}}' demo4-dockerfile-labels:v1 | jq
+
+# Stop and remove the container
+
+docker rm -f mylabels-demo
+
+# List Docker Images to confirm removal
+
+docker images
+
+# List Static Files from Docker Container
+
+docker exec -it my-add-vs-copy-demo ls -lrta /usr/share/nginx/html
